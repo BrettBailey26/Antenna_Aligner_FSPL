@@ -1,0 +1,26 @@
+name: fspl_app
+
+description: A simple Flutter app for calculating free-space path loss.
+
+publish_to: 'none' # this is not a published package
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+  flutter: 
+    sdk: flutter
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

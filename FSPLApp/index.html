@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FSPL Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 400px; margin: 40px auto; }
+        label, input { display: block; width: 100%; margin-bottom: 12px; }
+        button { padding: 8px 16px; }
+        .result { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Free-space Path Loss</h2>
+
+    <label>Distance (meters):
+        <input type="number" id="distance" step="any" placeholder="e.g. 1000">
+    </label>
+    <label>Frequency (Hz):
+        <input type="number" id="frequency" step="any" placeholder="e.g. 2.4e9">
+    </label>
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="output" class="result"></div>
+
+    <script>
+        function calculate() {
+            const d = parseFloat(document.getElementById('distance').value);
+            const f = parseFloat(document.getElementById('frequency').value);
+            if (isNaN(d) || isNaN(f) || d <= 0 || f <= 0) {
+                document.getElementById('output').textContent = 'Enter positive numbers.';
+                return;
+            }
+            const c = 299792458.0;
+            const ratio = 4 * Math.PI * d * f / c;
+            const loss = 20 * Math.log10(ratio);
+            document.getElementById('output').textContent = 'FSPL: ' + loss.toFixed(2) + ' dB';
+        }
+    </script>
+</body>
+</html>
